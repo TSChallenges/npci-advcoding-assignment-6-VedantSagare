@@ -1,11 +1,19 @@
 package com.mystore.app;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
+
+@Component
 class Product {
     
     private int id;
     private String name;
     private String barcode;
 
+    @Autowired
+    public Product(Barcode barcode) {
+        this.barcode = barCoder.createBarcode(this);
+    }
     Barcode barCoder = new Barcode();
 
     public Product() {
